@@ -89,6 +89,7 @@ public class One extends Fragment {
 
     private void initListView() {
         mlistView.setScrollingWhileRefreshingEnabled(false);
+        mlistView.setVerticalFadingEdgeEnabled(false);
         mlistView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         mlistView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() { //设置上拉刷新和下拉加载更多的监听器
             @Override

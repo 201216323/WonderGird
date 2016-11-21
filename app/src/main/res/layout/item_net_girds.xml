@@ -1,22 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_horizontal_margin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e3ececec"
     android:orientation="horizontal">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/view_left"
+    <RelativeLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        fresco:actualImageScaleType="focusCrop"/>
+        android:layout_height="wrap_content">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:background="@drawable/card_background_selector"
+            android:id="@+id/view_left"
+            android:layout_width="150dp"
+            android:layout_height="190dp"
+            android:padding="5dp"
+            android:layout_centerHorizontal="true"
+            fresco:actualImageScaleType="centerCrop"/>
+    </RelativeLayout>
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/view_right"
+    <RelativeLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        fresco:actualImageScaleType="focusCrop"/>
+        android:layout_height="wrap_content">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:background="@drawable/card_background_selector"
+            android:id="@+id/view_right"
+            android:layout_width="150dp"
+            android:layout_height="190dp"
+            android:padding="5dp"
+            android:layout_centerHorizontal="true"
+            fresco:actualImageScaleType="centerCrop"/>
+    </RelativeLayout>
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.lanyuan.wondergird.htmlparse;
 
 import android.net.Uri;
+import android.util.Log;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -31,8 +32,16 @@ public class HtmlParse {
         Elements elements = document.select("span.page-ch");
         //Log.e("girl", String.valueOf(elements.size()));
         if (elements.size() > 0) {
-            String s = elements.get(0).text().substring(1, 3);
-            return Integer.parseInt(s);
+            String code = elements.get(0).text();
+            String result;
+            char c = code.charAt(2);
+            Log.e("hey", String.valueOf(c));
+            if (c <= '9' && c >= '0') {
+                result = elements.get(0).text().substring(1, 3);
+            } else {
+                result = elements.get(0).text().substring(1, 2);
+            }
+            return Integer.parseInt(result);
         }
         return 0;
     }
