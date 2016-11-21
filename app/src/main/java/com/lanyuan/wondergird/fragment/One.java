@@ -113,7 +113,6 @@ public class One extends Fragment {
         mFragmentView = inflater.inflate(R.layout.fragment_one, container, false);
         ButterKnife.bind(this, mFragmentView);
         initListView();
-        isCreateView = true;
         return mFragmentView;
     }
 }

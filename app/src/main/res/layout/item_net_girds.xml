@@ -6,7 +6,7 @@
     android:paddingTop="@dimen/activity_horizontal_margin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e3ececec"
+    android:background="#e3e1e1e1"
     android:orientation="horizontal">
 
     <RelativeLayout
@@ -16,8 +16,8 @@
         <com.facebook.drawee.view.SimpleDraweeView
             android:background="@drawable/card_background_selector"
             android:id="@+id/view_left"
-            android:layout_width="150dp"
-            android:layout_height="190dp"
+            android:layout_width="160dp"
+            android:layout_height="220dp"
             android:padding="5dp"
             android:layout_centerHorizontal="true"
             fresco:actualImageScaleType="centerCrop"/>
@@ -30,8 +30,8 @@
         <com.facebook.drawee.view.SimpleDraweeView
             android:background="@drawable/card_background_selector"
             android:id="@+id/view_right"
-            android:layout_width="150dp"
-            android:layout_height="190dp"
+            android:layout_width="160dp"
+            android:layout_height="220dp"
             android:padding="5dp"
             android:layout_centerHorizontal="true"
             fresco:actualImageScaleType="centerCrop"/>
