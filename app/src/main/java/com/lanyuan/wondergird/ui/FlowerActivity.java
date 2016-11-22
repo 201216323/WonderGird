@@ -30,7 +30,7 @@ public class FlowerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flower);
-        setTitle("花瓣美女");
+        setTitle("(^ ◕ᴥ◕ ^)");
 
         ButterKnife.bind(this);
 
@@ -63,7 +63,7 @@ public class FlowerActivity extends AppCompatActivity {
         pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), fragmentList, titleList);
 
         viewPager.setAdapter(pagerAdapter);
-        viewPager.setOffscreenPageLimit(6);
+        viewPager.setOffscreenPageLimit(1);
         tabLayout.setupWithViewPager(viewPager);
     }
 }

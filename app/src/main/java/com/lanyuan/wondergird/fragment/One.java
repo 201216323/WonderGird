@@ -83,6 +83,8 @@ public class One extends Fragment {
             new GetDataTask(one).execute();
             mlistView.setMode(PullToRefreshBase.Mode.BOTH);
         } else if (mdata.size() > 1) {
+            madapter = new NetGirdsAdapter(getActivity(),getContext(),mdata);
+            mlistView.setAdapter(madapter);
             mlistView.setMode(PullToRefreshBase.Mode.BOTH);
         }
     }
@@ -94,14 +96,12 @@ public class One extends Fragment {
         mlistView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() { //设置上拉刷新和下拉加载更多的监听器
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-                Toast.makeText(getActivity(), "onPullDownToRefresh", Toast.LENGTH_SHORT).show();
                 mdata.removeAll(mdata);
                 new GetDataTask(one).execute();
             }
 
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                Toast.makeText(getActivity(), "onPullUpToRefresh", Toast.LENGTH_SHORT).show();
                 new GetMoreDataTask(one).execute();
             }
         });
