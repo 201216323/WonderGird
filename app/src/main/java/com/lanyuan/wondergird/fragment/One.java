@@ -2,6 +2,7 @@ package com.lanyuan.wondergird.fragment;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -133,5 +134,9 @@ public class One extends Fragment {
         ButterKnife.bind(this, mFragmentView);
         initListView();
         return mFragmentView;
+    }
+
+    public void NothingInfo() {
+        Toast.makeText(getActivity().getApplicationContext(), "似乎没有更多资源了……", Toast.LENGTH_SHORT).show();
     }
 }

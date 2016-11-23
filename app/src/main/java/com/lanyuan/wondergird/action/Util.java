@@ -5,7 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
 import com.lanyuan.wondergird.htmlparse.HtmlParse;
@@ -70,18 +73,26 @@ public class Util {
     }
 
     /*
+    检测是否连接WiFi
+     */
+    public static boolean isWIFIConnect(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo wifiNetworkInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if (wifiNetworkInfo.isConnected())
+            return true;
+        return false;
+    }
+
+    /*
     拿到指定连接下的所有妹子大图的地址
      */
     public static List<String> getAllPages(String firstUrl) {
         List<String> list = new ArrayList<>();
-
         int count = HtmlParse.getPagesCount(GetPage.getPageCode(firstUrl));
-        //Log.e("url", firstUrl);
         String keyCode = firstUrl.substring(firstUrl.length() - 9, firstUrl.length() - 5);
         String preCode = "http://img1.mm131.com/pic/";
         for (int i = 1; i <= count; i++) {
             list.add(preCode + keyCode + "/" + i + ".jpg");
-            //Log.e("url", preCode + keyCode + "/" + i + ".jpg");
         }
 
         return list;

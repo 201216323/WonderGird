@@ -23,14 +23,13 @@ public class HtmlParse {
                 return e.attr("href");
             }
         }
-        return pageCode;
+        return null;
     }
 
     public static int getPagesCount(String pageCode) {
 
         Document document = Jsoup.parse(pageCode);
         Elements elements = document.select("span.page-ch");
-        //Log.e("girl", String.valueOf(elements.size()));
         if (elements.size() > 0) {
             String code = elements.get(0).text();
             String result;
@@ -51,7 +50,6 @@ public class HtmlParse {
         Document document = Jsoup.parse(pageCode);
         Elements elements = document.select("dl.list-left dd a");
         for (Element e : elements) {
-            //Log.e("url", e.attr("href"));
             uriList.add(Uri.parse(e.attr("href")));
         }
 
@@ -63,7 +61,9 @@ public class HtmlParse {
         Document document = Jsoup.parse(pageCode);
         Elements elements = document.select("dl.list-left img");
         for (Element e : elements) {
-            uriList.add(Uri.parse(e.attr("src")));
+            String url = e.attr("src");
+            url = url.replace("0.jpg", "m.jpg");
+            uriList.add(Uri.parse(url));
         }
 
         return uriList;

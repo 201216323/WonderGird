@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("欢迎");
+
+        initSometing();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -72,6 +75,22 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void initSometing() {
+        if (!Util.isWIFIConnect(this)){
+            AlertDialog.Builder ab = new AlertDialog.Builder(this);
+            ab.setTitle("注意");
+            ab.setMessage("似乎你的设备没有连上WiFi？本应用浏览图片时耗费流量较大，如果流量不充裕，请连接WiFi后使用……");
+            ab.setPositiveButton("仍然使用流量",null);
+            ab.setNegativeButton("退出应用", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    System.exit(0);
+                }
+            });
+            ab.show();
+        }
     }
 
     private void payToMe() {
@@ -143,7 +162,7 @@ public class MainActivity extends AppCompatActivity
             if (NowTime - LastTime < 1000) {
                 System.exit(0);
             } else {
-                Snackbar.make(getWindow().getDecorView(), "再点一次返回键退出", Snackbar.LENGTH_SHORT).show();
+                Toast.makeText(this, "再点一次返回键退出", Toast.LENGTH_SHORT).show();
             }
             LastTime = NowTime;
         }
