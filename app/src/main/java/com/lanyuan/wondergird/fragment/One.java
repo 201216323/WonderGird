@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -36,6 +37,10 @@ public class One extends Fragment {
     public NetGirdsAdapter madapter;
     public List<Map<String, Uri>> mdata;
     public One one;
+
+    private int scrollX = 0;
+    private int scrollY = 0;
+    private int position;
 
     private View mFragmentView;
     //控件是否已经初始化
@@ -69,7 +74,7 @@ public class One extends Fragment {
 
     public void init(String url) {
         this.url = url;
-        Log.e("hey",this.url);
+        //Log.e("hey", this.url);
     }
 
     @Override
@@ -83,8 +88,8 @@ public class One extends Fragment {
             new GetDataTask(one).execute();
             mlistView.setMode(PullToRefreshBase.Mode.BOTH);
         } else if (mdata.size() > 1) {
-            madapter = new NetGirdsAdapter(getActivity(),getContext(),mdata);
             mlistView.setAdapter(madapter);
+            mlistView.getRefreshableView().setSelection(position);
             mlistView.setMode(PullToRefreshBase.Mode.BOTH);
         }
     }
@@ -93,6 +98,20 @@ public class One extends Fragment {
         mlistView.setScrollingWhileRefreshingEnabled(false);
         mlistView.setVerticalFadingEdgeEnabled(false);
         mlistView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+        mlistView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                if (scrollState == SCROLL_STATE_IDLE) {
+                    ListView v = mlistView.getRefreshableView();
+                    position = v.getFirstVisiblePosition();
+                }
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+            }
+        });
         mlistView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() { //设置上拉刷新和下拉加载更多的监听器
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {

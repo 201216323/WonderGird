@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.lanyuan.wondergird.R;
+import com.lanyuan.wondergird.action.Util;
 
 import butterknife.BindView;
 import butterknife.BindViews;
@@ -18,12 +19,23 @@ public class AboutActivity extends AppCompatActivity {
     @BindView(R.id.button_open)
     Button button_open;
 
+    @BindView(R.id.button_update)
+    Button button_update;
+
     @OnClick(R.id.button_open)
-    public void buttonOpenClick(View view){
+    public void buttonOpenClick(View view) {
         AlertDialog.Builder ab = new AlertDialog.Builder(this);
         ab.setTitle("向开源致敬");
         ab.setMessage(R.string.open_chart);
-        ab.setPositiveButton("确定",null);
+        ab.setPositiveButton("确定", null);
+        ab.show();
+    }
+    @OnClick(R.id.button_update)
+    public void buttonUpdateClick(View view){
+        AlertDialog.Builder ab = new AlertDialog.Builder(this);
+        ab.setTitle("历史更新记录");
+        ab.setMessage(R.string.update_info);
+        ab.setPositiveButton("确定", null);
         ab.show();
     }
 
@@ -31,7 +43,7 @@ public class AboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        setTitle("关于");
+        setTitle("关于  " + Util.getVersionName(this));
 
         ButterKnife.bind(this);
     }

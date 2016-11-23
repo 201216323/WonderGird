@@ -17,6 +17,9 @@ import java.util.List;
 
 public class Util {
 
+    /*
+    跳转到应用市场
+    */
     public static void goToAppMarket(Context context) {
         if (isExistKuAnMarket(context)) {
             Toast.makeText(context, "本应用目前仅发布在酷安市场，请前往酷安市场评分……", Toast.LENGTH_SHORT).show();
@@ -37,6 +40,9 @@ public class Util {
         }
     }
 
+    /*
+    判断是手机上否存在指定的应用市场
+     */
     public static boolean isExistKuAnMarket(Context context) {
         PackageManager packageManager = context.getPackageManager();
         List<PackageInfo> infoList = packageManager.getInstalledPackages(0);
@@ -49,6 +55,23 @@ public class Util {
         return pName.contains("com.coolapk.market");
     }
 
+    /*
+    拿到当前应用的版本号
+     */
+    public static String getVersionName(Context context) {
+        try {
+            PackageManager packageManager = context.getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
+            return packageInfo.versionName;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Null";
+        }
+    }
+
+    /*
+    拿到指定连接下的所有妹子大图的地址
+     */
     public static List<String> getAllPages(String firstUrl) {
         List<String> list = new ArrayList<>();
 

@@ -11,44 +11,62 @@
     tools:context="com.lanyuan.wondergird.ui.AboutActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:textSize="25sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="关于软件"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textSize="25sp" />
+
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:textSize="17sp"
             android:text="@string/about_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textSize="17sp" />
+
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:textSize="25sp"
             android:text="关于打赏"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textSize="25sp" />
+
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:textSize="17sp"
             android:text="@string/about_pay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textSize="17sp" />
+
         <TextView
-            android:paddingTop="10dp"
-            android:textSize="25sp"
-            android:text="关于开源"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="关于更新"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="历史更新记录" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="关于开源"
+            android:textSize="25sp" />
+
         <Button
             android:id="@+id/button_open"
-            android:text="向开源致敬(应用中使用组件的开源协议)"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="向开源致敬(应用中使用组件的开源协议)" />
     </LinearLayout>
 
 </ScrollView>

@@ -12,7 +12,9 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
+import android.view.KeyEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -107,7 +109,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(MainActivity.this, AboutActivity.class));
         } else if (id == R.id.nav_mark) {
             AlertDialog.Builder ab = new AlertDialog.Builder(this);
-            ab.setTitle("评分");
+            ab.setTitle("更新&评分");
             ab.setMessage("如果你觉得这个应用好的话，请给一个五星好评哟！");
             ab.setPositiveButton("给个好评", new DialogInterface.OnClickListener() {
                 @Override
@@ -129,5 +131,23 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    long LastTime = 0, NowTime = 0;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+            NowTime = System.currentTimeMillis();
+            if (NowTime - LastTime < 1000) {
+                System.exit(0);
+            } else {
+                Snackbar.make(getWindow().getDecorView(), "再点一次返回键退出", Snackbar.LENGTH_SHORT).show();
+            }
+            LastTime = NowTime;
+        }
+
+        return false;
     }
 }

@@ -33,7 +33,7 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... params) {
         List<Map<String, Uri>> data = new ArrayList<>();
-        Log.e("hey",fragment.url);
+        //Log.e("hey",fragment.url);
         String pageCode = GetPage.getPageCode(fragment.url);
         fragment.nextUrl = fragment.url + HtmlParse.getNextPage(pageCode);
         List<Uri> uriList = HtmlParse.getAllElements(pageCode);
